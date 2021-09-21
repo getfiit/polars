@@ -79,7 +79,6 @@ namespace polars {
         return SeriesMask(abs_diff > threshold, index());
     }
 
-
     // Series [op] Series methods
     SeriesMask Series::operator==(const Series &rhs) const {
         // TODO: make this fast enough to always check at runtime
@@ -735,6 +734,13 @@ namespace polars {
             arma::uvec indices = arma::conv_to<arma::uvec>::from(polars::numc::arange(l, ser.size()));
             return ser.iloc(indices);
         }
+    }
+
+    Series Series::arctan2(const Series &lhs, const Series &rhs) {
+        arma::vec x = lhs.values();
+        arma::vec y = rhs.values();
+        arma::vec result = numc::arctan2(x, y);
+        return Series(result, lhs.index());
     }
 
     /**

@@ -43,6 +43,8 @@ namespace polars {
 
         Series operator*(const double &rhs) const;
 
+        SeriesMask operator<(const double &rhs) const;
+        
         SeriesMask operator>(const double &rhs) const;
 
         SeriesMask operator>=(const double &rhs) const;
@@ -151,6 +153,8 @@ namespace polars {
 
         Series tail(int n=5) const;
 
+        static Series arctan2(const Series &lhs, const Series &rhs);
+        
     protected:
         arma::vec t;
         arma::vec v;
