@@ -129,6 +129,10 @@ namespace polars {
         return SeriesMask(values() > (arma::ones(size()) * rhs), index());
     }
 
+    SeriesMask Series::operator<(const double &rhs) const {
+        return SeriesMask(values() < (arma::ones(size()) * rhs), index());
+    }
+    
     SeriesMask Series::operator>=(const double &rhs) const {
         return SeriesMask(values() >= (arma::ones(size()) * rhs), index());
     }
